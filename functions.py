@@ -1,9 +1,8 @@
-import itertools
-from array import array
 import paramiko
 
 
-def generate_combinations_helper(characters, max_length):
+def generate_combinations_helper(characters: str, max_length: int):
+    """Gera todas as combinações possíveis de caracteres com o tamanho máximo especificado"""
     if max_length == 0:
         yield ''
     else:
@@ -12,7 +11,8 @@ def generate_combinations_helper(characters, max_length):
                 yield char + combo
 
 
-def generate_combinations(characters, min_length, max_length):
+def generate_combinations(characters: str, min_length: int, max_length: int):
+    """Gera todas as combinações possíveis de caracteres com o tamanho mínimo e máximo especificados"""
     for length in range(min_length, max_length + 1):
         yield from generate_combinations_helper(characters, length)
 

