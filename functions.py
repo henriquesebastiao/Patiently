@@ -36,3 +36,12 @@ def ssh_login(hostname, port, username, password):
         return True
     except paramiko.AuthenticationException:
         return False
+
+
+def manual():
+    return """
+Usage: python3 main.py [OPTIONS]
+
+Options:
+    -h, --help      Mostra esta mensagem
+"""
